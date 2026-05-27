@@ -1,9 +1,14 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 8000;
 const MONGO_URL = process.env.MONGO_URL || 'mongodb://localhost:27017/octofit';
+
+app.use(express.json());
 
 mongoose.connect(MONGO_URL)
   .then(() => console.log('MongoDB connected'))
